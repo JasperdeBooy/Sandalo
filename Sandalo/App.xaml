@@ -1,0 +1,52 @@
+﻿<Application x:Class="Sandalo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Sandalo"
+			 xmlns:helpers="clr-namespace:Sandalo.Helpers"
+			 StartupUri="Views/MainWindow.xaml">
+	<Application.Resources>
+		<!-- Converters -->
+		<helpers:NullToVisibilityConverter x:Key="SearchSandaalConverter"/>
+		<helpers:NullToVisibilityConverter x:Key="NewSandaalConverter"/>
+		<!-- Tabitems -->
+		<Style TargetType="TabItem">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="TabItem">
+
+						<Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+							<ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
+							</Trigger>
+							<Trigger Property="IsSelected" Value="False">
+								<Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<!-- Buttons -->
+		<Style TargetType="Border">
+			<Setter Property="CornerRadius" Value="5"/>
+		</Style>
+
+		<!-- Images -->
+		<Style TargetType="{x:Type Image}">
+			<Setter Property="Visibility" Value="Hidden"/>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding ElementName=Afbeelding, Path=IsChecked}" Value="True">
+					<Setter Property="Visibility" Value="Visible"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+	</Application.Resources>
+</Application>
