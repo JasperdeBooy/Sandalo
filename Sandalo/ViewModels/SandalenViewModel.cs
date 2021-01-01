@@ -150,8 +150,21 @@ namespace Sandalo.ViewModels
 		}
 		private void ZoekSandalen()
 		{
-			string checkMessage = "Zoek naar " + Sandaal.ToString();
-			System.Windows.MessageBox.Show(checkMessage, "Search", MessageBoxButton.OKCancel);
+			Sandalen.Clear();
+			List<Sandaal> Zoek = (List<Sandaal>)_dataService.GeefAlleSandalen();
+			foreach (Sandaal s in Zoek)
+			{
+					if (s.Naam.ToLower().Contains(_sandaal.Naam.ToLower())
+						&& s.Beschrijving.ToLower().Contains(_sandaal.Beschrijving.ToLower())
+						&& s.Kleur.ToLower().Contains(_sandaal.Kleur.ToLower())
+						&& s.Commentaar.ToLower().Contains(_sandaal.Commentaar.ToLower())
+						&& (s.Prijs == _sandaal.Prijs || _sandaal.Prijs == 0.0f)
+						&& (s.Subcategorie == _sandaal.Subcategorie || _sandaal.Subcategorie == null)
+						)
+					{
+						Sandalen.Add(s);
+					};				
+			}
 			Cancel();
 		}
 	}
