@@ -19,9 +19,13 @@ namespace Sandalo.ViewModels
 		private ObservableCollection<Sandaal> _sandalen;
 		private Sandaal _selectedSandaal;
 		private Subcategorie _selectedSubcategorie;
+		private Categorie _selectedCategorie;
 		private bool _searchmode;
 		private bool _showDetail;
 		private bool _showGrid;
+		private SubCategorieViewModel _subCategorieVM;
+		private bool _filterControle;
+
 		public ICommand AddCommand { get; private set; }
 		public ICommand CancelCommand { get; private set; }
 		public ICommand DeleteCommand { get; private set; }
@@ -49,6 +53,9 @@ namespace Sandalo.ViewModels
 			ShowGrid = true;
 			UpdateCommand = new RelayCommand(WijzigSandaal);
 			ZoekCommand = new RelayCommand(ZoekSandalen);
+			_subCategorieVM = new SubCategorieViewModel(_dataService);
+			_filterControle = false;
+
 		}
 		public bool Addmode
 		{
@@ -120,15 +127,42 @@ namespace Sandalo.ViewModels
 		}
 		private void FilterSubcategorie()
 		{
+			if (_filterControle)
+			{
+				_filterControle = false;
+			}
+			else 
+			{
+				Sandalen.Clear();
+				List<Sandaal> Zoek = (List<Sandaal>)_dataService.GeefAlleSandalen();
+				foreach (Sandaal s in Zoek)
+				{
+					if (s.Subcategorie == _selectedSubcategorie || _selectedSubcategorie == null)
+					{
+						Sandalen.Add(s);
+					}
+				}
+			}
+		}
+
+		public Categorie SelectedCategorie
+		{
+			get { return _selectedCategorie; }
+			set { _selectedCategorie = value; FilterCategorie(); }
+		}
+		private void FilterCategorie()
+		{
 			Sandalen.Clear();
 			List<Sandaal> Zoek = (List<Sandaal>)_dataService.GeefAlleSandalen();
 			foreach (Sandaal s in Zoek)
 			{
-				if (s.Subcategorie == _selectedSubcategorie || _selectedSubcategorie == null)
+				if (s.Subcategorie.Categorie == _selectedCategorie || _selectedCategorie == null)
 				{
 					Sandalen.Add(s);
 				}
 			}
+			_filterControle = true;
+			SubCategorieVM.Filter(SelectedCategorie);
 		}
 
 		public bool ShowDetail
@@ -185,6 +219,11 @@ namespace Sandalo.ViewModels
 					};				
 			}
 			Cancel();
+		}
+
+		public SubCategorieViewModel SubCategorieVM
+		{
+			get { return _subCategorieVM; }
 		}
 	}
 }

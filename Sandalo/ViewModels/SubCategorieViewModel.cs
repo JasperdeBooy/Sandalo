@@ -29,5 +29,18 @@ namespace Sandalo.ViewModels
 			get { return _subcategorieen; }
 			set { OnPropertyChanged(ref _subcategorieen, value); }
 		}
+
+		internal void Filter(Categorie selectedCategorie)
+		{
+			Subcategorieen.Clear();
+			List<Subcategorie> Zoek = (List<Subcategorie>)_dataService.GeefAlleSubCategorieen();
+			foreach (Subcategorie s in Zoek)
+			{
+				if (s.Categorie == selectedCategorie || selectedCategorie == null)
+				{
+					Subcategorieen.Add(s);
+				}
+			}
+		}
 	}
 }

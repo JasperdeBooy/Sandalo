@@ -7,6 +7,6 @@
 			 xmlns:local="clr-namespace:Sandalo.Views"
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
-		<ComboBox ItemsSource="{Binding SubCategorieVM.Subcategorieen}" SelectedItem="{Binding SandaalVM.SelectedSubcategorie}" DisplayMemberPath="Naam"/>
+		<ComboBox ItemsSource="{Binding SandaalVM.SubCategorieVM.Subcategorieen}" SelectedItem="{Binding SandaalVM.SelectedSubcategorie}" DisplayMemberPath="Naam"/>
 	</Grid>
 </UserControl>

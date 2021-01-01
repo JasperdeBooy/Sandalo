@@ -22,7 +22,7 @@
 		</Grid.RowDefinitions>
 
 		<StackPanel Grid.Column="0" Grid.Row="0"  Margin="10,10,10,10">
-			<views:CategorieView DataContext="{Binding CategorieVM}" Margin="10"/>
+			<views:CategorieView Margin="10"/>
 			<views:SubCategorieView Margin="10"/>
 		</StackPanel>
 
