@@ -21,9 +21,8 @@ namespace Sandalo.Models
 		}
 		public override string ToString()
 		{
-			return this.Naam;
-			//return string.Format("{0}; {1}; {2}",
-			//	this.Naam, this.Beschrijving, this.Categorie);
+			return string.Format("{0}; {1}; {2}",
+				this.Naam, this.Beschrijving, this.Categorie);
 		}
 	}
 }

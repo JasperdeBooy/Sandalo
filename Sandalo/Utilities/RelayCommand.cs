@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Contacten1.ViewModels
+namespace Sandalo.ViewModels
 {
 	public class RelayCommand<T> : ICommand
 	{

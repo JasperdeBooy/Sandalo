@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace Sandalo.Views
 {
 	/// <summary>
-	/// Interaction logic for Zoeken.xaml
+	/// Interaction logic for SandaalView.xaml
 	/// </summary>
-	public partial class ZoekSandaal : UserControl
+	public partial class SandaalView : UserControl
 	{
-		public ZoekSandaal()
+		public SandaalView()
 		{
 			InitializeComponent();
 		}

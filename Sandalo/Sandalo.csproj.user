@@ -13,16 +13,10 @@
     <Compile Update="Views\InventarisSandaalView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\NieuweSandaal.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\SandalenView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SubCategorieView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\ZoekSandaal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -36,16 +30,13 @@
     <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\NieuweSandaal.xaml">
+    <Page Update="Views\SandaalView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SandalenView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SubCategorieView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ZoekSandaal.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

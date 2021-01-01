@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sandalo.Services
 {
-	public class MockDataService :IDataService
+	public class MockDataService : IDataService
 	{
 		private IList<Sandaal> _sandalen;
 		private IList<Categorie> _categorieen;
@@ -65,9 +65,24 @@ namespace Sandalo.Services
 		{
 			return _subcategorieen;
 		}
-
+		private int GeefVolgendeSandaalId()
+		{
+			int id = 0;
+			foreach (Sandaal sandaal in _sandalen)
+			{
+				if (sandaal.Id > id)
+				{
+					id = sandaal.Id;
+				}
+			}
+			return id + 1;
+		}
 		public IList<Sandaal> VoegSandaalToe(Sandaal sandaal)
 		{
+			if (sandaal.Id == 0)
+			{
+				sandaal.Id = GeefVolgendeSandaalId();
+			}
 			_sandalen.Add(sandaal);
 			return _sandalen;
 		}

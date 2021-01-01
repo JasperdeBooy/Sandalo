@@ -27,6 +27,10 @@ namespace Sandalo.Models
 			Subcategorie = subcategorie;
 			Commentaar = commentaar;
 		}
-
+		public override string ToString()
+		{
+			return string.Format("{0}; {1}; {2}; {3}; {4}; {5}; {6}",
+				this.Naam, this.Beschrijving, this.Afbeelding, this.Prijs, this.Kleur, this.Subcategorie, this.Commentaar);
+		}
 	}
 }

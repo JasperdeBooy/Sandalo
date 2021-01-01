@@ -13,8 +13,6 @@ namespace Sandalo.ViewModels
 		private IDataService _dataService;
 		private ObservableCollection<Subcategorie> _subcategorieen;
 		private Subcategorie _selectedSubcategorie;
-		private int _hoogteSubcategorie = 50;
-
 		public SubCategorieViewModel(IDataService dataservice)
 		{
 			_dataService = dataservice;
@@ -30,11 +28,6 @@ namespace Sandalo.ViewModels
 		{
 			get { return _subcategorieen; }
 			set { OnPropertyChanged(ref _subcategorieen, value); }
-		}
-		public int HoogteSubcategorie
-		{
-			get { return _hoogteSubcategorie; }
-			set { _hoogteSubcategorie = value; }
 		}
 	}
 }

@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Sandalo"
-		xmlns:viewmodels="clr-namespace:Sandalo.ViewModels"
+        xmlns:viewmodels="clr-namespace:Sandalo.ViewModels"
 		xmlns:views="clr-namespace:Sandalo.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -15,29 +14,19 @@
 		<TabItem Background="LightBlue" Header="Inventaris">
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="800"/>
+					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
-					<RowDefinition Height="450"/>
+					<RowDefinition Height="*"/>
 				</Grid.RowDefinitions>
 
 				<StackPanel Grid.Column="0" Grid.Row="0" Grid.ZIndex="3">
-					<views:InventarisSandaalView/>
+					<views:InventarisSandaalView Visibility="{Binding SandaalVM.ShowGrid, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 				</StackPanel>
-
 				<StackPanel Grid.Column="0" Grid.Row="0" Grid.ZIndex="2">
-					<!--<views:NieuweSandaal Visibility="{Binding NewSandaal, Converter={StaticResource NewSandaalConverter}}"/>-->
+					<views:SandaalView Visibility="{Binding SandaalVM.ShowDetail, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 				</StackPanel>
-
-				<!--<StackPanel Grid.Column="0" Grid.Row="0" Grid.ZIndex="3">
-	
-				</StackPanel>-->
-
 			</Grid>
-			
-			
-			
-			<!--<views:NieuweSandaal Visibility="{Binding NewSandaal, Converter={StaticResource NewSandaalConverter}}"/>-->
 		</TabItem>
 
 		<TabItem Background="LightBlue" Header="Klanten">
