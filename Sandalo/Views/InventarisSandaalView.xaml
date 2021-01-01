@@ -23,19 +23,7 @@
 
 		<StackPanel Grid.Column="0" Grid.Row="0"  Margin="10,10,10,10">
 			<views:CategorieView DataContext="{Binding CategorieVM}" Margin="10"/>
-			<views:SubCategorieView DataContext="{Binding SubCategorieVM}" Margin="10"/>
-			<Image VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="/Images/disco_sandaal.png" Margin="0,0,50,-5">
-				<Image.Style>
-					<Style TargetType="{x:Type Image}">
-						<Setter Property="Visibility" Value="Hidden"/>
-						<Style.Triggers>
-							<DataTrigger Binding="{Binding ElementName=Afbeelding, Path=IsChecked}" Value="True">
-								<Setter Property="Visibility" Value="Visible"/>
-							</DataTrigger>
-						</Style.Triggers>
-					</Style>
-				</Image.Style>
-			</Image>
+			<views:SubCategorieView Margin="10"/>
 		</StackPanel>
 
 		<StackPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4">
@@ -50,7 +38,5 @@
                 Command="{Binding SandaalVM.EditCommand}"/>
 		<Button Grid.Column="4" Grid.Row="1" Content="Verwijderen" Height="25" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"
                 Command="{Binding SandaalVM.DeleteCommand}"/>
-
-		<CheckBox Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Name="Afbeelding" Content="Afbeelding tonen"/>
 	</Grid>
 </UserControl>

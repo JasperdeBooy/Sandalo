@@ -18,6 +18,7 @@ namespace Sandalo.ViewModels
 		private Sandaal _sandaal;
 		private ObservableCollection<Sandaal> _sandalen;
 		private Sandaal _selectedSandaal;
+		private Subcategorie _selectedSubcategorie;
 		private bool _searchmode;
 		private bool _showDetail;
 		private bool _showGrid;
@@ -112,6 +113,24 @@ namespace Sandalo.ViewModels
 			get { return _selectedSandaal; }
 			set { OnPropertyChanged(ref _selectedSandaal, value); }
 		}
+		public Subcategorie SelectedSubcategorie
+		{
+			get { return _selectedSubcategorie; }
+			set { _selectedSubcategorie = value; FilterSubcategorie(); }
+		}
+		private void FilterSubcategorie()
+		{
+			Sandalen.Clear();
+			List<Sandaal> Zoek = (List<Sandaal>)_dataService.GeefAlleSandalen();
+			foreach (Sandaal s in Zoek)
+			{
+				if (s.Subcategorie == _selectedSubcategorie || _selectedSubcategorie == null)
+				{
+					Sandalen.Add(s);
+				}
+			}
+		}
+
 		public bool ShowDetail
 		{
 			get { return _showDetail; }
